@@ -424,4 +424,4 @@ var infoContract = new web3.eth.Contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-], '0xDF93943D96846e91e63977b1A262B8f91981aB52');
+], '0x8244E2F553dA20C83798CAcFD94eAE43AF49c0E5');
