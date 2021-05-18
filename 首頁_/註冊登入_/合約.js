@@ -3,7 +3,7 @@ if (window.ethereum) {
 	window.ethereum.enable();
 }
 else {
-	web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.50.196:8545"));
+	web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.50.75:8545"));
 } //Metamask用 
 
 /*if (typeof web3 !== 'undefined') {
@@ -424,4 +424,4 @@ var infoContract = new web3.eth.Contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-], '0xc40A839249A4f91fD9fd062Dc5AfB0138F903ecE');
+], '0x8C1990b66D14d95F9Ea61dDAAFb046a5cb4278ca');
