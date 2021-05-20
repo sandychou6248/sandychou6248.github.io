@@ -87,3 +87,13 @@ $("#showFunOrPayeeInfo").click(function(){
       
     })
  });
+
+ $("#fundraiserList").click(function () {
+   var result = infoContract.methods.fundraiserList().call();
+   result.then(function(value){
+      //alert("募款人的address:"+value);
+      document.body.appendChild(document.createElement('p'));
+      document.querySelector("body p:last-child").id="jstext";
+      document.querySelector("#jstext").innerHTML ="Fundraiser address:" + "<br>" +value  ;
+   })
+});//查詢fundraiser的名單
