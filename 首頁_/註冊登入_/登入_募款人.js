@@ -66,3 +66,15 @@ $("#showFunOrPayeeInfo").click(function(){
 	   
 	 })
   });
+
+  $("#payeeList").click(function () {
+	var result = infoContract.methods.payeeList().call();
+
+	result.then(function(value){
+		//alert("受款人的address:"+value);
+		document.body.appendChild(document.createElement('p'));
+		document.querySelector("body p:last-child").id="jstext";
+		document.querySelector("#jstext").innerHTML ="Payee address:" + "<br>" +value  ;
+	})
+	
+});//查看商家名單
