@@ -4,7 +4,7 @@ if (window.ethereum) {
 }
 else {
 	web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.50.75:8545"));
-} //Metamask用 
+} // Ganache用
 
 /*if (typeof web3 !== 'undefined') {
 	web3 = new Web3(web3.currentProvider);
@@ -12,7 +12,7 @@ else {
 else {
 	// set the provider you want from Web3.providers
 	web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-}//Ganache用*/
+}*/
 
 
 
@@ -424,4 +424,4 @@ var infoContract = new web3.eth.Contract([
 		"stateMutability": "view",
 		"type": "function"
 	}
-], '0x8C1990b66D14d95F9Ea61dDAAFb046a5cb4278ca');
+], '0xb59701ABb25275D16138caD7d114346047fdd28D');
