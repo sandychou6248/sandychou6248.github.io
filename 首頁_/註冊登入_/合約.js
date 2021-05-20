@@ -3,7 +3,7 @@ if (window.ethereum) {
 	window.ethereum.enable();
 }
 else {
-	web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.50.75:8545"));
+	web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
 } // Ganache用
 
 /*if (typeof web3 !== 'undefined') {
