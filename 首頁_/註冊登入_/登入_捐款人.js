@@ -5,7 +5,7 @@ $("#donate").click(function () {
    
     var result=infoContract.methods.donate($("#fundraiser").val()).send({ from:$.query.get("address"), value: ($("#value").val())*Math.pow(10,18), gas: 5000000 });
     result.catch(err=>{
-               alert("捐款失敗!" + err);
+               alert("捐款失敗!" + JSON.parse(err));
                
    })
    result.then(function(){
@@ -19,7 +19,8 @@ $("#getBuyList").click(function () {
    result.then(function(value){
        //alert("此募款人的金流:"+JSON.stringify(value) );
                document.body.appendChild(document.createElement('p'));
-               document.querySelector("body p:last-child").id="jstext";
+               document.querySelector(
+                  "body p:last-child").id="jstext";
                document.querySelector("#jstext").innerHTML ="此募款人的金流:" + "<br>" +"payee:"+JSON.stringify(value)  ;
                 
                
