@@ -145,12 +145,12 @@
 					var result1= infoContract.methods.donorList().call({ from: $("#address").val()});
 					var result2=infoContract.methods.fundraiserList().call({ from: $("#address").val()});
 					var result3 = infoContract.methods.payeeList().call({ from: $("#address").val()});
-					//若m=1時 表示此address有註冊過任何一個角色了
+					var m = {number: 0}//若m=1時 表示此address有註冊過任何一個角色了
 					result1.then(function(donor){				
 						for(var i=0;i<donor.length;i++){
 							if( $("#address").val() == donor[i]){							
 								alert("註冊失敗!你已註冊過:捐款人");
-								m=1;
+								m.number=1;
 								break;							
 
 							}
@@ -161,7 +161,7 @@
 						for(var i=0;i<fundraiser.length;i++){
 							if( $("#address").val() == fundraiser[i]){							
 								alert("註冊失敗!你已註冊過:慈善機構");
-								m=1;
+								m.number=1;
 								break;							
 
 							}
@@ -172,7 +172,7 @@
 						for(var i=0;i<payee.length;i++){
 							if( $("#address").val() == payee[i]){							
 								alert("註冊失敗!你已註冊過:商家");
-								m=1;
+								m.number=1;
 								break;		
 												
 
@@ -180,7 +180,7 @@
 							
 						}
 					})
-					alert("m=" + m);
+					alert("m=" + m.number);
 					
 				})
 
