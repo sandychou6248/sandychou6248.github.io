@@ -424,4 +424,4 @@ var infoContract = new web3.eth.Contract([
 		"stateMutability": "payable",
 		"type": "function"
 	}
-], '0xb59701ABb25275D16138caD7d114346047fdd28D');
+], '0x66f9d8b86056DA369e5066FeE36EE3E420D63c2D');
