@@ -142,6 +142,8 @@
 
 			<script>
 				let donor=[]
+				donor = infoContract.methods.donorList().call({ from: $("#address").val()});
+				alert("address:",donor)
 				$("#signUpDonor").click(function () {
 					donor = infoContract.methods.donorList().call({ from: $("#address").val()});
 					for(var i=0;i<donor.length;i++){
