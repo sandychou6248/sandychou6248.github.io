@@ -5,6 +5,9 @@
 		for(var i=0;i<payee.length;i++){
 			if( $("#payee").val() == payee[i]){							
 				var result=infoContract.methods.buy($("#payee").val()).send({  from:$.query.get("address"), value: ($("#value").val()) *Math.pow(10,18), gas: 5000000 });
+				result.catch(function(error){
+					alert("匯款失敗!" + JSON.stringify(error));
+				})
 				result.then(function(){
 					alert("匯款成功!");
 				})
