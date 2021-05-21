@@ -145,43 +145,39 @@
 					var result1= infoContract.methods.donorList().call({ from: $("#address").val()});
 					var result2=infoContract.methods.fundraiserList().call({ from: $("#address").val()});
 					var result3 = infoContract.methods.payeeList().call({ from: $("#address").val()});
-					var m = {number: 0}//若m=1時 表示此address有註冊過任何一個角色了(這邊用物件存取使用call by sharing ;因為一般的變數 只能用call by value)
-					result1.then(function(donor,m){				
+					result1.then(function(donor){				
 						for(var i=0;i<donor.length;i++){
 							if( $("#address").val() == donor[i]){							
 								alert("註冊失敗!你已註冊過:捐款人");
-								m.number=1;
-								break;							
+								break;
 
 							}
 							
 						}
 					})
-					result2.then(function(fundraiser,m){				
+					result2.then(function(fundraiser){				
 						for(var i=0;i<fundraiser.length;i++){
 							if( $("#address").val() == fundraiser[i]){							
 								alert("註冊失敗!你已註冊過:慈善機構");
-								m.number=1;
-								break;							
-
+								break;
 							}
 							
 						}
 					})
-					result3.then(function(payee,m){				
+					result3.then(function(payee){				
 						for(var i=0;i<payee.length;i++){
 							if( $("#address").val() == payee[i]){							
 								alert("註冊失敗!你已註冊過:商家");
-								m.number=1;
-								break;		
+								break;
 												
 
 							}
 							
 						}
 					})
-					alert("m=" + m.number);
+				
 					
+
 				})
 
 			
