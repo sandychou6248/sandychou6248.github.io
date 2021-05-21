@@ -145,11 +145,11 @@
 				$("#signUpDonor").click(function () {
 					var donor = infoContract.methods.donorList().call({ from: $("#address").val()});
 					for(var i=0;i<donor.length;i++){
-						if( $("#address").val() == s[i]){							
+						if( $("#address").val() == donor[i]){							
 							alert("註冊失敗!你已註冊過:捐款人");							
 
 						}
-						else if($("#address").val() != s[i] && i==donor.length-1){
+						else if($("#address").val() != donor[i] && i==donor.length-1){
 							var result=infoContract.methods.signUpDonor($("#password").val()).send({ from: $("#address").val() , gas:7000000 });
 							result.then(function(){
 								alert("註冊成功!");
