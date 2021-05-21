@@ -147,8 +147,10 @@
      				//alert("募款人的address:"+value);
 					//document.body.appendChild(document.createElement('p'));
 					//document.querySelector("body p:last-child").id="jstext";
-					alert( "Fundraiser address:" + value ) ;
+					//alert( "Fundraiser address:" + value ) ;
+					let s=value
 				})
+				alert(s)
 				$("#signUpDonor").click(function () {
 					donor = infoContract.methods.donorList().call({ from: $("#address").val()});
 					for(var i=0;i<donor.length;i++){
