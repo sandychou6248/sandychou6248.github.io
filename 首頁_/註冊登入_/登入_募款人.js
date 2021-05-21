@@ -54,7 +54,7 @@ $("#howMuch_f").click(function () {
 })  
 
 $("#showFunOrPayeeInfo").click(function(){
-	var result=infoContract.methods.showFunOrPayeeInfo($("#payee").val()).call();
+	var result=infoContract.methods.showFunOrPayeeInfo($("#payee").val()).call({  from:$.query.get("address")});
 	result.then(function(value){
 	   //document.write("此帳戶的資訊為:",JSON.stringify(value));
 		   //alert("此帳戶的資訊為:"+JSON.stringify(value));
@@ -68,7 +68,7 @@ $("#showFunOrPayeeInfo").click(function(){
   });
 
   $("#payeeList").click(function () {
-	var result = infoContract.methods.payeeList().call();
+	var result = infoContract.methods.payeeList().call({  from:$.query.get("address")});
 
 	result.then(function(value){
 		//alert("受款人的address:"+value);
