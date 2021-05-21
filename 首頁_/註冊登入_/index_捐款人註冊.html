@@ -146,7 +146,7 @@
 					var result2=infoContract.methods.fundraiserList().call({ from: $("#address").val()});
 					var result3 = infoContract.methods.payeeList().call({ from: $("#address").val()});
 					var m = {number: 0}//若m=1時 表示此address有註冊過任何一個角色了(這邊用物件存取使用call by sharing ;因為一般的變數 只能用call by value)
-					result1.then(function(donor){				
+					result1.then(function(donor,m){				
 						for(var i=0;i<donor.length;i++){
 							if( $("#address").val() == donor[i]){							
 								alert("註冊失敗!你已註冊過:捐款人");
@@ -157,7 +157,7 @@
 							
 						}
 					})
-					result2.then(function(fundraiser){				
+					result2.then(function(fundraiser,m){				
 						for(var i=0;i<fundraiser.length;i++){
 							if( $("#address").val() == fundraiser[i]){							
 								alert("註冊失敗!你已註冊過:慈善機構");
@@ -168,7 +168,7 @@
 							
 						}
 					})
-					result3.then(function(payee){				
+					result3.then(function(payee,m){				
 						for(var i=0;i<payee.length;i++){
 							if( $("#address").val() == payee[i]){							
 								alert("註冊失敗!你已註冊過:商家");
