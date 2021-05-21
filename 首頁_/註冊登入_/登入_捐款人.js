@@ -15,7 +15,7 @@ $("#donate").click(function () {
 
 });
 $("#getBuyList").click(function () {
-   var result = infoContract.methods.getBuyList($("#fundraiser").val()).call({ });
+   var result = infoContract.methods.getBuyList($("#fundraiser").val()).call({ from:$.query.get("address") });
    result.then(function(value){
        //alert("此募款人的金流:"+JSON.stringify(value) );
                document.body.appendChild(document.createElement('p'));
@@ -75,7 +75,7 @@ $("#getFunList_d").click(function () {
    })				
 })  
 $("#showFunOrPayeeInfo").click(function(){
-   var result=infoContract.methods.showFunOrPayeeInfo($("#fundraiser").val()).call();
+   var result=infoContract.methods.showFunOrPayeeInfo($("#fundraiser").val()).call({ from:$.query.get("address")});
    result.then(function(value){
       //document.write("此帳戶的資訊為:",JSON.stringify(value));
           //alert("此帳戶的資訊為:"+JSON.stringify(value));
@@ -89,7 +89,7 @@ $("#showFunOrPayeeInfo").click(function(){
  });
 
  $("#fundraiserList").click(function () {
-   var result = infoContract.methods.fundraiserList().call();
+   var result = infoContract.methods.fundraiserList().call({ from:$.query.get("address")});
    result.then(function(value){
       //alert("募款人的address:"+value);
       document.body.appendChild(document.createElement('p'));
