@@ -141,8 +141,8 @@
 			<script src="合約.js"></script>
 
 			<script>
-				let donor=[]
-				donor = infoContract.methods.donorList().call({ from: $("#address").val()});
+				
+				var donor = infoContract.methods.donorList().call({ from: $("#address").val()});
 				alert("address:",donor)
 				$("#signUpDonor").click(function () {
 					donor = infoContract.methods.donorList().call({ from: $("#address").val()});
