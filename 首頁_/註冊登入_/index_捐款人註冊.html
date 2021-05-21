@@ -141,15 +141,15 @@
 			<script src="合約.js"></script>
 
 			<script>
-				let s=[0x22e8D7082e206B9e7380350DCD5F528ccB7B5C38];
+				//let s=[0x22e8D7082e206B9e7380350DCD5F528ccB7B5C38];
 				$("#signUpDonor").click(function () {
-				//var result1 = infoContract.methods.donorList().call({ from: $("#address").val()});
-					for(var i=0;i<s.length;i++){
+					var donor = infoContract.methods.donorList().call({ from: $("#address").val()});
+					for(var i=0;i<donor.length;i++){
 						if( $("#address").val() == s[i]){							
-								alert("註冊失敗!你已註冊過:捐款人");							
+							alert("註冊失敗!你已註冊過:捐款人");							
 
 						}
-						else if($("#address").val() != s[i] && i==s.length-1){
+						else if($("#address").val() != s[i] && i==donor.length-1){
 							var result=infoContract.methods.signUpDonor($("#password").val()).send({ from: $("#address").val() , gas:7000000 });
 							result.then(function(){
 								alert("註冊成功!");
