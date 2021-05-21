@@ -162,7 +162,7 @@
 				$("#signUpPayee").click(function () {
 					var result=infoContract.methods.signUpPayee($("#password").val(),$("#name").val(),$("#phoneNumber").val(),$("#email").val()).send({ from: $("#address").val() , gas:500000 });
 					result.catch(err=>{
-						alert("註冊失敗!" + err);
+						alert("註冊失敗!" + JSON.stringify(err));
 						
 					})
 					result.then(function(){
