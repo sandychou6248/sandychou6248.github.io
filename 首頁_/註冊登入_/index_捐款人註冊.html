@@ -143,7 +143,7 @@
 			<script>
 				//let s=[0x22e8D7082e206B9e7380350DCD5F528ccB7B5C38];
 				$("#signUpDonor").click(function () {
-					var donor = infoContract.methods.donorList().call({ from: $("#address").val()});
+					let donor = infoContract.methods.donorList().call({ from: $("#address").val()});
 					for(var i=0;i<donor.length;i++){
 						if( $("#address").val() == donor[i]){							
 							alert("註冊失敗!你已註冊過:捐款人");							
