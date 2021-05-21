@@ -145,7 +145,7 @@
 					var result1= infoContract.methods.donorList().call({ from: $("#address").val()});
 					var result2=infoContract.methods.fundraiserList().call({ from: $("#address").val()});
 					var result3 = infoContract.methods.payeeList().call({ from: $("#address").val()});
-					var m = {number: 0}//若m=1時 表示此address有註冊過任何一個角色了
+					var m = {number: 0}//若m=1時 表示此address有註冊過任何一個角色了(這邊用物件存取使用call by sharing ;因為一般的變數 只能用call by value)
 					result1.then(function(donor){				
 						for(var i=0;i<donor.length;i++){
 							if( $("#address").val() == donor[i]){							
