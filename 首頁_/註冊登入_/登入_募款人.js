@@ -1,17 +1,18 @@
 //下列為fundraiser的function
  $("#buy").click(function () {
-	var result2=infoContract.methods.fundraiserList().call({ from: $("#address").val()});
-	result2.then(function(fundraiser){				
-		for(var i=0;i<fundraiser.length;i++){
-			if( $("#address").val() == fundraiser[i]){							
-				alert("註冊失敗!你已註冊過:慈善機構");											
-				break;
-			}	
-			else if($("#address").val() != fundraiser[i] && i==fundraiser.length-1){
+	var result3 = infoContract.methods.payeeList().call({ from:$.query.get("address")});
+	result3.then(function(payee){				
+		for(var i=0;i<payee.length;i++){
+			if( $("#payee").val() == payee[i]){							
 				var result=infoContract.methods.buy($("#payee").val()).send({  from:$.query.get("address"), value: ($("#value").val()) *Math.pow(10,18), gas: 5000000 });
 				result.then(function(){
 					alert("匯款成功!");
 				})
+				
+				break;
+			}	
+			else if($("#payee").val() != payee[i] && i==payee.length-1){
+				alert("匯款失敗!請輸入商家的地址");
 			}
 		}	
   });
