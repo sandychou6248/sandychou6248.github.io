@@ -8,6 +8,9 @@ $("#donate").click(function () {
       for(var i=0;i<fundraiser.length;i++){
          if($("#fundraiser").val() == fundraiser[i]){		
             var result=infoContract.methods.donate($("#fundraiser").val()).send({ from:$.query.get("address"), value: ($("#value").val())*Math.pow(10,18), gas: 5000000 });
+            result.catch(function(error){
+					alert("匯款失敗!" + JSON.stringify(error));
+				})
             result.then(function(){
                alert("捐款成功!");
             })					
