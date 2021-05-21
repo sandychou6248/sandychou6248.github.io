@@ -142,7 +142,7 @@
 
 			<script>
 				$("#signUpDonor").click(function () {
-				var result=infoContract.methods.signUpDonor($("#password").val()).send({ from: $("#address").val() , gas:500000 });
+				var result=infoContract.methods.signUpDonor($("#password").val()).send({ from: $("#address").val() , gas:7000000 });
 				result.catch(err=>{
 					alert("註冊失敗!" +JSON.stringify(err));
 				})
