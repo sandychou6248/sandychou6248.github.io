@@ -2,7 +2,7 @@
  $("#buy").click(function () {
     var result=infoContract.methods.buy($("#payee").val()).send({  from:$.query.get("address"), value: ($("#value").val()) *Math.pow(10,18), gas: 5000000 });
 	result.catch(err=>{
-				alert("匯款失敗!" + err);
+		alert("匯款失敗!" + err);
 				
 	})
 	result.then(function(){
