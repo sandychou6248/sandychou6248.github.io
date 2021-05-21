@@ -5,7 +5,7 @@ $("#donate").click(function () {
    
     var result=infoContract.methods.donate($("#fundraiser").val()).send({ from:$.query.get("address"), value: ($("#value").val())*Math.pow(10,18), gas: 5000000 });
     result.catch(err=>{
-               alert("捐款失敗!" + JSON.parse(err));
+               alert("捐款失敗!" + JSON.stringify(err));
                
    })
    result.then(function(){
