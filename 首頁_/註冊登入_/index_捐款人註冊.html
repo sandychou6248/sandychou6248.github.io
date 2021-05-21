@@ -146,12 +146,12 @@
 					var result2=infoContract.methods.fundraiserList().call({ from: $("#address").val()});
 					var result3 = infoContract.methods.payeeList().call({ from: $("#address").val()});
 
-					var a={signup:false};//當signup為true時，表示已註冊過(用物件才能call by address)
+					var a={signup:'not yet'};//當signup為true時，表示已註冊過(用物件才能call by address)
 					result1.then(function(donor){				
 						for(var i=0;i<donor.length;i++){
 							if( $("#address").val() == donor[i]){							
 								alert("註冊失敗!你已註冊過:捐款人");
-								signUp(a);
+								signUp(a);//當signup為true時，表示已註冊過(用物件才能call by address)
 								break;
 
 							}
@@ -162,7 +162,7 @@
 						for(var i=0;i<fundraiser.length;i++){
 							if( $("#address").val() == fundraiser[i]){							
 								alert("註冊失敗!你已註冊過:慈善機構");
-								signUp(a);
+								signUp(a);//當signup為true時，表示已註冊過(用物件才能call by address)
 								break;
 							}
 							
@@ -172,7 +172,7 @@
 						for(var i=0;i<payee.length;i++){
 							if( $("#address").val() == payee[i]){							
 								alert("註冊失敗!你已註冊過:商家");
-								signUp(a);
+								signUp(a);//當signup為true時，表示已註冊過(用物件才能call by address)
 								break;
 												
 
@@ -181,7 +181,7 @@
 						}
 					})
 				function signUp(a){
-					a.signup=true;
+					a.signup='already signed up';//當signup為true時，表示已註冊過(用物件才能call by address)
 				}
 					alert("a=",a.signup);	
 
