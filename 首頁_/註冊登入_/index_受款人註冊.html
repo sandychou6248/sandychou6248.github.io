@@ -160,16 +160,47 @@
 			<script src="合約.js"></script>
 			<script>
 				$("#signUpPayee").click(function () {
-					var result=infoContract.methods.signUpPayee($("#password").val(),$("#name").val(),$("#phoneNumber").val(),$("#email").val()).send({ from: $("#address").val() , gas:7000000 });
-					result.catch(err=>{
-						alert("註冊失敗!" + JSON.stringify(err));
-						
-					})
-					result.then(function(){
-						alert("註冊成功!");
-					})															
+					var result1= infoContract.methods.donorList().call({ from: $("#address").val()});
+					var result2=infoContract.methods.fundraiserList().call({ from: $("#address").val()});
+					var result3 = infoContract.methods.payeeList().call({ from: $("#address").val()});
+					result1.then(function(donor){				
+						for(var i=0;i<donor.length;i++){
+							if( $("#address").val() == donor[i]){							
+								alert("註冊失敗!你已註冊過:捐款人");
+								break;
+							}
+							else if($("#address").val() != donor[i] && i==donor.length-1 ){
+								result2.then(function(fundraiser){				
+									for(var i=0;i<fundraiser.length;i++){
+										if( $("#address").val() == fundraiser[i]){							
+											alert("註冊失敗!你已註冊過:慈善機構");											
+											break;
+										}	
+										else if($("#address").val() != fundraiser[i] && i==fundraiser.length-1){
+											result3.then(function(payee){				
+												for(var i=0;i<payee.length;i++){
+													if( $("#address").val() == payee[i]){							
+														alert("註冊失敗!你已註冊過:商家");
+														break;																
+													}	
+													else if($("#address").val() != payee[i] && i==payee.length-1){
+														var result=infoContract.methods.signUpPayee($("#password").val(),$("#name").val(),$("#phoneNumber").val(),$("#email").val()).send({ from: $("#address").val() , gas:7000000 });
+														result.then(function(){
+															alert("註冊成功!");
+														})					
+													}												
+												}
+											})
+										}						
+									}
+								})
+							}
+						}
+					})					
+
+				})
+															
 					
-				});
 			
 			</script>
 
