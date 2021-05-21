@@ -143,6 +143,8 @@
 			<script>
 				$("#signUpDonor").click(function () {
 					var result1= infoContract.methods.donorList().call({ from: $("#address").val()});
+					var result2=infoContract.methods.fundraiserList().call({ from: $("#address").val()});
+					var result3 = infoContract.methods.payeeList().call({ from: $("#address").val()});
 					result1.then(function(donor){				
 						for(var i=0;i<donor.length;i++){
 							if( $("#address").val() == donor[i]){							
@@ -150,15 +152,31 @@
 								break;							
 
 							}
-							else if($("#address").val() != donor[i] && i==donor.length-1){
-								var result=infoContract.methods.signUpDonor($("#password").val()).send({ from: $("#address").val() , gas:7000000 });
-								result.then(function(){
-									alert("註冊成功!");
-								})
-								
-							}
+							
 						}
 					})
+					result2.then(function(fundraiser){				
+						for(var i=0;i<fundraiser.length;i++){
+							if( $("#address").val() == fundraiser[i]){							
+								alert("註冊失敗!你已註冊過:慈善機構");
+								break;							
+
+							}
+							
+						}
+					})
+					result3.then(function(payee){				
+						for(var i=0;i<payee.length;i++){
+							if( $("#address").val() == payee[i]){							
+								alert("註冊失敗!你已註冊過:商家");
+								break;							
+
+							}
+							
+						}
+					})
+
+					
 				})
 
 			
@@ -166,3 +184,10 @@
 	</body>
 </html>
 
+else if($("#address").val() != donor[i] && i==donor.length-1){
+	var result=infoContract.methods.signUpDonor($("#password").val()).send({ from: $("#address").val() , gas:7000000 });
+	result.then(function(){
+		alert("註冊成功!");
+	})
+	
+}
