@@ -2,18 +2,30 @@
 //$.query.get("address");  跨檔案抓值 從url抓下來
 
 $("#donate").click(function () {
-   
-    var result=infoContract.methods.donate($("#fundraiser").val()).send({ from:$.query.get("address"), value: ($("#value").val())*Math.pow(10,18), gas: 5000000 });
-    result.catch(err=>{
-               alert("捐款失敗!" + JSON.stringify(err));
-               
-   })
-   result.then(function(){
-       alert("捐款成功!");
-   })
-  
+   var result2=infoContract.methods.fundraiserList().call({ from:$.query.get("address") });
 
-});
+   result2.then(function(fundraiser){				
+      for(var i=0;i<fundraiser.length;i++){
+         if($("#fundraiser").val() == fundraiser[i]){		
+            var result=infoContract.methods.donate($("#fundraiser").val()).send({ from:$.query.get("address"), value: ($("#value").val())*Math.pow(10,18), gas: 5000000 });
+            result.then(function(){
+               alert("捐款成功!");
+            })					
+            break;
+
+           
+         }	
+         else if($("#fundraiser").val()!= fundraiser[i] && i==fundraiser.length-1){
+            alert("捐款失敗!請輸入慈善機構的地址");
+         }
+      }
+   })
+   
+});  
+   
+
+
+
 $("#getBuyList").click(function () {
    var result = infoContract.methods.getBuyList($("#fundraiser").val()).call({ from:$.query.get("address") });
    result.then(function(value){
