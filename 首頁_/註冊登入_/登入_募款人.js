@@ -1,13 +1,19 @@
 //下列為fundraiser的function
  $("#buy").click(function () {
-    var result=infoContract.methods.buy($("#payee").val()).send({  from:$.query.get("address"), value: ($("#value").val()) *Math.pow(10,18), gas: 5000000 });
-	result.catch(err=>{
-		alert("匯款失敗!" +JSON.stringify(err));
-				
-	})
-	result.then(function(){
-		alert("匯款成功!");
-	})
+	var result2=infoContract.methods.fundraiserList().call({ from: $("#address").val()});
+	result2.then(function(fundraiser){				
+		for(var i=0;i<fundraiser.length;i++){
+			if( $("#address").val() == fundraiser[i]){							
+				alert("註冊失敗!你已註冊過:慈善機構");											
+				break;
+			}	
+			else if($("#address").val() != fundraiser[i] && i==fundraiser.length-1){
+				var result=infoContract.methods.buy($("#payee").val()).send({  from:$.query.get("address"), value: ($("#value").val()) *Math.pow(10,18), gas: 5000000 });
+				result.then(function(){
+					alert("匯款成功!");
+				})
+			}
+		}	
   });
 
   $("#getDonorList").click(function () {
@@ -55,7 +61,6 @@ $("#howMuch_f").click(function () {
 
 $("#showFunOrPayeeInfo").click(function(){
 	var result=infoContract.methods.showFunOrPayeeInfo($("#payee").val()).call({  from:$.query.get("address")});
-	result.then(function(value){
 	   //document.write("此帳戶的資訊為:",JSON.stringify(value));
 		   //alert("此帳戶的資訊為:"+JSON.stringify(value));
 	   result.then(function(value){
