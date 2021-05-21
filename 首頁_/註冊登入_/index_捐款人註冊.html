@@ -151,8 +151,10 @@
 						}
 						else if($("#address").val() != s[i] && i==s.length-1){
 							var result=infoContract.methods.signUpDonor($("#password").val()).send({ from: $("#address").val() , gas:7000000 });
-
-							alert("註冊成功!");
+							result.then(function(){
+								alert("註冊成功!");
+							})
+							
 						}
 					}
 				
