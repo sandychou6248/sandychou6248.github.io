@@ -146,7 +146,8 @@
 					result1.then(function(donor){				
 						for(var i=0;i<donor.length;i++){
 							if( $("#address").val() == donor[i]){							
-								alert("註冊失敗!你已註冊過:捐款人");							
+								alert("註冊失敗!你已註冊過:捐款人");
+								break;							
 
 							}
 							else if($("#address").val() != donor[i] && i==donor.length-1){
