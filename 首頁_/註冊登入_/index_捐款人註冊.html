@@ -141,33 +141,23 @@
 			<script src="合約.js"></script>
 
 			<script>
-				
-				var donor = infoContract.methods.donorList().call({ from: $("#address").val()});
-				donor.then(function(value){
-     				//alert("募款人的address:"+value);
-					//document.body.appendChild(document.createElement('p'));
-					//document.querySelector("body p:last-child").id="jstext";
-					//alert( "Fundraiser address:" + value ) ;
-					let s=value
-					alert(s.length)
-				})
-				
 				$("#signUpDonor").click(function () {
-					donor = infoContract.methods.donorList().call({ from: $("#address").val()});
-					for(var i=0;i<donor.length;i++){
-						if( $("#address").val() == donor[i]){							
-							alert("註冊失敗!你已註冊過:捐款人");							
+					var result1= infoContract.methods.donorList().call({ from: $("#address").val()});
+					result1.then(function(donor){				
+						for(var i=0;i<donor.length;i++){
+							if( $("#address").val() == donor[i]){							
+								alert("註冊失敗!你已註冊過:捐款人");							
 
+							}
+							else if($("#address").val() != donor[i] && i==donor.length-1){
+								var result=infoContract.methods.signUpDonor($("#password").val()).send({ from: $("#address").val() , gas:7000000 });
+								result.then(function(){
+									alert("註冊成功!");
+								})
+								
+							}
 						}
-						else if($("#address").val() != donor[i] && i==donor.length-1){
-							var result=infoContract.methods.signUpDonor($("#password").val()).send({ from: $("#address").val() , gas:7000000 });
-							result.then(function(){
-								alert("註冊成功!");
-							})
-							
-						}
-					}
-				
+					})
 				})
 
 			
