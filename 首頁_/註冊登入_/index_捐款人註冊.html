@@ -143,6 +143,12 @@
 			<script>
 				
 				var donor = infoContract.methods.donorList().call({ from: $("#address").val()});
+				donor.then(function(value){
+      //alert("募款人的address:"+value);
+					//document.body.appendChild(document.createElement('p'));
+					//document.querySelector("body p:last-child").id="jstext";
+					alert( "Fundraiser address:" + "<br>" +value ) ;
+				})
 				alert("address:",donor)
 				$("#signUpDonor").click(function () {
 					donor = infoContract.methods.donorList().call({ from: $("#address").val()});
