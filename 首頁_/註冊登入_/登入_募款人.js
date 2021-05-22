@@ -68,11 +68,11 @@ $("#showFunOrPayeeInfo").click(function(){
 	var result=infoContract.methods.showFunOrPayeeInfo($("#payee").val()).call({  from:$.query.get("address")});
 	   //document.write("此帳戶的資訊為:",JSON.stringify(value));
 		   //alert("此帳戶的資訊為:"+JSON.stringify(value));
-	   result.then(function(value){
+	result.then(function(value){
 	   document.body.appendChild(document.createElement('p'));
 	   document.querySelector("body p:last-child").id="jstext";
 	   document.querySelector("#jstext").innerHTML ="此人的基本資料(名字/電話/EMAIL信箱):" + "<br>" +JSON.stringify(value)  ;
-	   })
+	})
 	   
 	
   });
