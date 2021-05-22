@@ -18,7 +18,8 @@
 				alert("匯款失敗!請輸入商家的地址");
 			}
 		}	
-  });
+	})	
+});
 
   $("#getDonorList").click(function () {
     var result = infoContract.methods.getDonorList().call({ from:$.query.get("address") });
@@ -71,9 +72,9 @@ $("#showFunOrPayeeInfo").click(function(){
 	   document.body.appendChild(document.createElement('p'));
 	   document.querySelector("body p:last-child").id="jstext";
 	   document.querySelector("#jstext").innerHTML ="此人的基本資料(名字/電話/EMAIL信箱):" + "<br>" +JSON.stringify(value)  ;
-	})
+	   })
 	   
-	 })
+	
   });
 
   $("#payeeList").click(function () {
