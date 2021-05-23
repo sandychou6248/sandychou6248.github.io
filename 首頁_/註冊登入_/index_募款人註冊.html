@@ -188,7 +188,7 @@
 														break;																
 													}	
 													else if($("#address").val() != payee[i] && i==payee.length-1){
-														var result=infoContract.methods.signUpFundraiser($("#password").val(),$("#name").val(),$("#phoneNumber").val(),$("#email").val()).send({ from: $("#address").val() , gas:50000 });
+														var result=infoContract.methods.signUpFundraiser($("#password").val(),$("#name").val(),$("#phoneNumber").val(),$("#email").val()).send({ from: $("#address").val() , gas:500000 });
 														result.then(function(){
 															alert("註冊成功!");
 														})
